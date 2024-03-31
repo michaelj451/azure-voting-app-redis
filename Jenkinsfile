@@ -12,6 +12,17 @@ pipeline {
                 sh(script: 'docker images -a')
             }
         }
+        stage('Docker image cleanup if name is already in use') {
+            steps {
+                sh(script: """
+                    if docker images -q jenkins-pipeline; then
+                        echo "Image already exists, removing it"
+                        docker rmi jenkins-pipeline
+                        docker images -a
+                    fi
+                """)
+            }
+        }
         stage('Docker Build') {
             steps {
                 sh(script: """
