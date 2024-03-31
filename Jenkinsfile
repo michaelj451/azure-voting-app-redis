@@ -7,9 +7,12 @@ pipeline {
                 echo "$GIT_BRANCH"
             }
         }
-        stage('Docker Build') {
+        stage('Docker Test') {
             steps {
                 sh(script: 'docker images -a')
+            }
+        }
+        stage('Docker Build') {
                 sh(script: """
                     cd azure-vote/
                     docker images -a
