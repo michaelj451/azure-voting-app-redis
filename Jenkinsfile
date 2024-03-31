@@ -8,6 +8,11 @@ pipeline {
             }
         }
         stage('Docker Build') {
+            agent {
+                docker {
+                    image 'docker:latest'
+                }
+            }
             steps {
                 sh(script: 'docker images -a')
             }
