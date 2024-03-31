@@ -19,6 +19,8 @@ pipeline {
                         echo "Image already exists, removing it"
                         docker rmi jenkins-pipeline
                         docker images -a
+                    else
+                        echo "Image does not exist"
                     fi
                 """)
             }
