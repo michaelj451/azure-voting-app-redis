@@ -36,5 +36,45 @@ pipeline {
                 """)
             }
         }
+        stage('Start Test App') {
+            steps {
+                sh(script: """
+                    # Start the app
+                    ./scripts/test_container.sh
+                """)
+            }
+            post {
+                success {
+                    echo 'Test app started successfully'
+                }
+                failure {
+                    echo 'Failed to start test app'
+                }
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh(script: """
+                    # Run tests
+                    pytest ./tests/test_sample.py
+                """)
+            }
+        }
+        stage('Stop Test App') {
+            steps {
+                sh(script: """
+                    # Stop the app
+                    ./scripts/stop_container.sh
+                """)
+            }
+            post {
+                success {
+                    echo 'Test app stopped successfully'
+                }
+                failure {
+                    echo 'Failed to stop test app'
+                }
+            }
+        }
     }
 }
