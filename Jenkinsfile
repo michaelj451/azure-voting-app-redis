@@ -15,13 +15,13 @@ pipeline {
         stage('Docker image cleanup if name is already in use') {
             steps {
                 sh(script: """
-                    if docker images -q jenkins-pipeline; then
+                    if docker images -q jenkins-pipeline | grep -q .; then
                         echo "Image already exists, removing it"
-                        docker rmi jenkins-pipeline
-                        docker images -a
+                        docker rmi jenkins-pipeline || true
                     else
-                        echo "Image does not exist"
+                        echo "Image does not exist, no action required"
                     fi
+                    docker images -a
                 """)
             }
         }
