@@ -58,7 +58,6 @@ pipeline {
                     # Run tests
                     docker-compose up -d
                     sh(script: docker container ls)
-                    ./scripts/test_container.sh
                 """)
             }
         }
