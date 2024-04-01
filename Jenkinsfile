@@ -56,8 +56,8 @@ pipeline {
             steps {
                 sh(script: """
                     # Run tests
-                    sh(script: docker-compose up -d)
-                    sh(script: docker container ls)
+                    docker-compose up -d
+                    docker container ls
                 """)
             }
         }
@@ -65,8 +65,8 @@ pipeline {
             steps {
                 sh(script: """
                     # Stop the app
-                    sh(script: docker-compose down)
-                    sh(script: docker container ls)
+                    docker-compose stop
+                    docker container ls
                 """)
             }
             post {
