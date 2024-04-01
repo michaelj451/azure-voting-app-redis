@@ -56,7 +56,9 @@ pipeline {
             steps {
                 sh(script: """
                     # Run tests
-                    pytest ./tests/test_sample.py
+                    docker-compose up -d
+                    sh(script: docker container ls)
+                    ./scripts/test_container.sh
                 """)
             }
         }
