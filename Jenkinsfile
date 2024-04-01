@@ -36,7 +36,7 @@ pipeline {
                 """)
             }
         }
-        stage('Start Test App') {
+        stage('Check Test App') {
             steps {
                 sh(script: """
                     # Start the app
@@ -52,13 +52,21 @@ pipeline {
                 }
             }
         }
-        stage('Run Tests') {
+        stage('Start Test App') {
             steps {
                 sh(script: """
                     # Run tests
                     docker-compose up -d
                     docker container ls
                 """)
+            }
+            post {
+                success {
+                    echo 'Started test app successfully'
+                }
+                failure {
+                    echo 'Failed to start test app'
+                }
             }
         }
         stage('Stop Test App') {
@@ -71,7 +79,7 @@ pipeline {
             }
             post {
                 success {
-                    echo 'Test app stopped successfully'
+                    echo 'Stopped test app successfully'
                 }
                 failure {
                     echo 'Failed to stop test app'
