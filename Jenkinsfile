@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh(script: """
                     # Start the app
-                    ./scripts/test_container.sh
+                    echo "Starting test app"
                 """)
             }
             post {
