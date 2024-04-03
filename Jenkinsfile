@@ -88,7 +88,7 @@ pipeline {
         }
         stage('Docker Prune') {
             steps {
-                sh(script: 'docker system prune -a')
+                sh(script: 'docker system prune -a -f')
             }
         }
     }
