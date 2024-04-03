@@ -86,5 +86,10 @@ pipeline {
                 }
             }
         }
+        stage('Docker Prune') {
+            steps {
+                sh(script: 'docker system prune -f')
+            }
+        }
     }
 }
