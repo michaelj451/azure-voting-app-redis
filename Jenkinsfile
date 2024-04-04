@@ -107,8 +107,6 @@ pipeline {
                     echo "$DOCKER_TAG"
                     withCredentials([usernamePassword(credentialsId: 'gitlab_credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY
-                        docker tag $DOCKER_IMAGE $DOCKER_REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG
-                        docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG
                     }
                 """)
             }
