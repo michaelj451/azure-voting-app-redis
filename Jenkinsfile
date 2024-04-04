@@ -86,11 +86,11 @@ pipeline {
                 }
             }
         }
-        stage('Docker Prune') {
-            steps {
-                sh(script: 'docker system prune -a -f')
-            }
-        }
+        // stage('Docker Prune') {
+        //     steps {
+        //         sh(script: 'docker system prune -a -f')
+        //     }
+        // }
         stage('Push to Registry') {
             steps {
                 sh(script: """
