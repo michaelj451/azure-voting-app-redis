@@ -91,5 +91,13 @@ pipeline {
                 sh(script: 'docker system prune -a -f')
             }
         }
+        stage('Push to Registry') {
+            steps {
+                sh(script: """
+                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    echo "$WORKSPACE"
+                """)
+            }
+        }
     }
 }
