@@ -93,12 +93,18 @@ pipeline {
         // }
         stage('Docker Push') {
             environment {
-                DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+                // Credentials are for gitlab job credentials named gitlab_credentials
+                DOCKER_REGISTRY = 'gitlab.mikeferguson.us:5050'
+                DOCKER_IMAGE = 'jenkins-pipeline'
+                DOCKER_TAG = "${env.BUILD_NUMBER}"
+                DOCKER_CREDENTIALS_ID = 'gitlab_credentials'
             }
+
             steps {
                 sh(script: """
                     echo "Mike Was Here"
-                    echo "$DOCKER_USERNAME"
+                    echo "$DOCKER_CREDENTIALS_USR"
+                    echo "$DOCKER_CREDENTIALS_PSW"
                 """)
             }
         }
