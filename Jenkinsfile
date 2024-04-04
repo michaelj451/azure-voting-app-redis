@@ -92,7 +92,6 @@ pipeline {
         //     }
         // }
         stage('Docker Push') {
-            agent any
             environment {
                 // Credentials are for gitlab job credentials named gitlab_credentials
                 DOCKER_REGISTRY = 'gitlab.mikeferguson.us:5050'
