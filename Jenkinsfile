@@ -91,5 +91,12 @@ pipeline {
         //         sh(script: 'docker system prune -a -f')
         //     }
         // }
+        stage('Docker Push') {
+            steps {
+                sh(script: """
+                    echo "Mike Was Here"
+                """)
+            }
+        }
     }
 }
