@@ -105,7 +105,7 @@ pipeline {
                     echo "$DOCKER_IMAGE"
                     echo "$DOCKER_TAG"
                     withCredentials([usernamePassword(credentialsId: 'gitlab_credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY
+                        sh "docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY"
                     }
                     echo "Pushing image to registry"
                 }
