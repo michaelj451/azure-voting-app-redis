@@ -105,6 +105,7 @@ pipeline {
                     echo "$DOCKER_REGISTRY"
                     echo "$DOCKER_IMAGE"
                     echo "$DOCKER_TAG"
+                    echo "credentialsId: gitlab_credentials"
                 """)
             }
         }
