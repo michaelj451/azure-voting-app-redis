@@ -97,7 +97,7 @@ pipeline {
                 DOCKER_REGISTRY = 'gitlab.mikeferguson.us:5050'
                 DOCKER_IMAGE = 'jenkins-pipeline'
                 DOCKER_TAG = "${env.BUILD_NUMBER}"
-                DOCKER_CREDENTIALS_ID = 'gitlab_credentials'
+                DOCKER_CREDENTIALS_ID = credentials('docker-credentials')
             }
 
             steps {
