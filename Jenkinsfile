@@ -92,6 +92,9 @@ pipeline {
         //     }
         // }
         stage('Docker Push') {
+            environment {
+                DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+            }
             steps {
                 sh(script: """
                     echo "Mike Was Here"
