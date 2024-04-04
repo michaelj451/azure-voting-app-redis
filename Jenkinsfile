@@ -95,6 +95,7 @@ pipeline {
             steps {
                 sh(script: """
                     echo "Mike Was Here"
+                    echo "$DOCKER_USERNAME"
                 """)
             }
         }
