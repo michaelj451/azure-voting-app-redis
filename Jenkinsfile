@@ -103,7 +103,10 @@ pipeline {
             steps {
                 sh(script: """
                     withCredentials([usernamePassword(credentialsId: 'gitlab_credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        docker login -u $USERNAME -p $PASSWORD $DOCKER_REGISTRY
+                        echo "$DOCKER_REGISTRY"
+                        echo "$DOCKER_IMAGE"
+                        echo "$DOCKER_TAG"
+                        echo "$USERNAME"
                     }
                 """)
             }
