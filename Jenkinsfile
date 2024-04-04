@@ -12,6 +12,11 @@ pipeline {
                 sh(script: 'docker images -a')
             }
         }
+        stage('Docker Prune') {
+            steps {
+                sh(script: 'docker system prune -a -f')
+            }
+        }
         stage('Docker image cleanup if name is already in use') {
             steps {
                 sh(script: """
