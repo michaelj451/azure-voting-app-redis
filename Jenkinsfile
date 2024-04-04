@@ -100,7 +100,7 @@ pipeline {
             }
 
             steps {
-                sh(script: """
+                script {
                     echo "$DOCKER_REGISTRY"
                     echo "$DOCKER_IMAGE"
                     echo "$DOCKER_TAG"
@@ -108,7 +108,7 @@ pipeline {
                         docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY
                     }
                     echo "Pushing image to registry"
-                """)
+                }
             }
         }
     }
