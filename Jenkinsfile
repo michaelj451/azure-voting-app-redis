@@ -101,7 +101,7 @@ pipeline {
                 // Credentials are for gitlab job credentials named gitlab_credentials
                 DOCKER_REGISTRY = 'gitlab.mikeferguson.us:5050/mxferguson/azure-vote'
                 DOCKER_IMAGE = 'jenkins-pipeline'
-                // make DOCKER_TAG the brnach name + build number
+                // make DOCKER_TAG the registry name + branch name + build number
                 DOCKER_TAG = "${GIT_BRANCH}-${BUILD_NUMBER}"
             }
 
